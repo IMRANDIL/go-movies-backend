@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func Hello (w http.ResponseWriter, r *http.Request){
-	fmt.Fprint(w, "hello world from golang")
+func (app *application) Home (w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w, "hello world from %s",app.Domain)
 }
