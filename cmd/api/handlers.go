@@ -1,9 +1,11 @@
 package main
 
 import (
+	"backend/internal/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func (app *application) Home (w http.ResponseWriter, r *http.Request){
@@ -30,5 +32,17 @@ func (app *application) Home (w http.ResponseWriter, r *http.Request){
 
 
 func (app *application) AllMovies(w http.ResponseWriter, r *http.Request){
-	
+	var movies []models.Movie
+rd,_ := time.Parse("2006-02-12","1986-03-07")
+
+	highlander := models.Movie{
+		ID: 1,
+		Title: "Highlander",
+		ReleaseDate: rd,
+		MPAARating: "R",
+		RunTime: 116,
+		Description: "A very nice movie",
+
+
+	}
 }
