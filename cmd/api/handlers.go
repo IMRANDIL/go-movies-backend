@@ -8,9 +8,9 @@ import (
 
 func (app *application) Home (w http.ResponseWriter, r *http.Request){
 	var payload = struct {
-		Status string `json: "status"`
-		Message string `json: "message"`
-		Version string `json: "version"`
+		Status string `json:"status"`
+		Message string `json:"message"`
+		Version string `json:"version"`
 	}{
 		Status: "active",
 		Message: "Go movies up and running",
