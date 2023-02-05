@@ -50,7 +50,7 @@ rd,_ := time.Parse("2006-02-12","1986-03-07")
 	movies = append(movies, highlander)
 	rd,_ = time.Parse("2006-02-12","2010-03-07")
 	hateStory := models.Movie{
-		ID: 1,
+		ID: 2,
 		Title: "Hate Story",
 		ReleaseDate: rd,
 		MPAARating: "AA",
@@ -63,4 +63,13 @@ rd,_ := time.Parse("2006-02-12","1986-03-07")
 	}
 
 	movies = append(movies, hateStory)
+
+	out,err := json.Marshal(movies)
+	if err != nil{
+		fmt.Println(err)
+	}
+
+	w.Header().Set("Content-Type","application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(out)
 }
