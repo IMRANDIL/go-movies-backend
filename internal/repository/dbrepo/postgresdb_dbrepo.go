@@ -37,5 +37,25 @@ if err != nil {
 defer rows.Close()
 	var movies []*models.Movie
 
+	for rows.Next(){
+		var movie models.Movie
+		err := rows.Scan(
+			&movie.ID,
+			&movie.Title,
+			&movie.CreatedAt,
+			&movie.Description,
+			&movie.Image,
+			&movie.MPAARating,
+			&movie.ReleaseDate,
+			&movie.RunTime,
+			&movie.UpdatedAt,
+		)
+
+		if err != nil {
+			return nil, err
+		}
+
+	}
+
 	return movies, nil
 }
