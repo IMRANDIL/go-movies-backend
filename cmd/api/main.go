@@ -27,6 +27,9 @@ flag.Parse()
 	//connect to the database
 conn, err := app.connectToDB()
 app.DB = conn
+defer app.DB.Close()
+
+
 if err !=nil {
 	log.Fatal(err)
 
