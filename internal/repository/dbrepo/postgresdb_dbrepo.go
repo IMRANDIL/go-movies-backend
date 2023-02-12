@@ -42,13 +42,15 @@ defer rows.Close()
 		err := rows.Scan(
 			&movie.ID,
 			&movie.Title,
-			&movie.CreatedAt,
-			&movie.Description,
-			&movie.Image,
-			&movie.MPAARating,
 			&movie.ReleaseDate,
 			&movie.RunTime,
+			&movie.MPAARating,
+			&movie.Description,
+			&movie.Image,
+			&movie.CreatedAt,
 			&movie.UpdatedAt,
+			
+				
 		)
 
 		if err != nil {
