@@ -57,6 +57,8 @@ defer rows.Close()
 			return nil, err
 		}
 
+		movies = append(movies, &movie)
+
 	}
 
 	return movies, nil
