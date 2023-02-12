@@ -21,13 +21,20 @@ func (m *DatabaseRepo) AllMovies() ([]*models.Movie, error) {
 query := `
 SELECT id, title, release_date,
 runtime, mpaa_rating, description,
-coalesce(image, ''),
-
-
-
+coalesce(image, ''), created_at, updated_at
+from 
+movies
+order by 
+title
 `
 
+rows, err := m.DB.QueryContext(ctx, query)
 
+if err != nil {
+	return nil, err
+}
+
+defer rows.Close()
 	var movies []*models.Movie
 
 	return movies, nil
