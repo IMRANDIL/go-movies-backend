@@ -67,8 +67,16 @@ func (j *Auth) GenerateTokenPair(user *jwtUser) (TokenPairs, error) {
 
 	// create a refresh token and set claims
 
-	// set the expiry for the refresh token
+	refreshToken := jwt.New(jwt.SigningMethodES256)
 
+	refreshTokenClaims := refreshToken.Claims.(jwt.MapClaims)
+
+	
+	refreshTokenClaims["sub"] = fmt.Sprint(user.ID)
+	refreshTokenClaims["iat"] = time.Now().UTC().Unix()
+
+	// set the expiry for the refresh token
+	refreshTokenClaims["exp"] = time.Now().UTC().Add(j.RefreshExpiry).Unix()
 	// create signed refresh token...
 	
 	// create tokenPairs and populate with signed tokens
