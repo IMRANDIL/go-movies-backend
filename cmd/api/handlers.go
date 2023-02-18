@@ -17,14 +17,7 @@ func (app *application) Home (w http.ResponseWriter, r *http.Request){
 		Version: "1.0.0",
 	}
 
-	out,err := json.Marshal(payload)
-	if err != nil{
-		fmt.Println(err)
-	}
-
-	w.Header().Set("Content-Type","application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(out)
+	_ = app.writeJSON(w, http.StatusOK, payload)
 	
 }
 
