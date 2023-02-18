@@ -35,6 +35,7 @@ func (app *application) AllMovies(w http.ResponseWriter, r *http.Request){
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 
