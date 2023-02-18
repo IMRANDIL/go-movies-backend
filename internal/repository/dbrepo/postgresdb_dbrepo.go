@@ -7,14 +7,14 @@ import (
 	"time"
 )
 
-type DatabaseRepo struct {
+type PostgresDatabaseRepo struct {
 	DB *sql.DB
 }
 
 const dbTimeout = time.Second * 3
 
 
-func (m *DatabaseRepo) AllMovies() ([]*models.Movie, error) {
+func (m *PostgresDatabaseRepo) AllMovies() ([]*models.Movie, error) {
 	ctx, cancel := context.WithTimeout(context.Background(),dbTimeout)
 	defer cancel()
 
