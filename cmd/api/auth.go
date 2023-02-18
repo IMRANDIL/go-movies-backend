@@ -7,4 +7,8 @@ type Auth struct {
 	Audience string
 	Secret string
 	TokenExpiry time.Duration
+	RefreshExpiry time.Duration
+	CookieDomain string
+	CookiePath string
+	CookieName string
 }
