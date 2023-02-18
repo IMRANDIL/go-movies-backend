@@ -23,4 +23,9 @@ func (app *application) writeJSON(w http.ResponseWriter, status int, data interf
 			w.Header()[key] = value
 		}
 	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	w.Write(out)
+	return nil
 }
