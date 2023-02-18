@@ -28,7 +28,7 @@ flag.Parse()
 	//connect to the database
 conn, err := app.connectToDB()
 app.DB = &dbrepo.PostgresDatabaseRepo{DB: conn}
-defer conn.Close()
+defer app.DB.Connection().Close()
 
 
 if err !=nil {

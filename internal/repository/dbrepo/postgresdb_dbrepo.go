@@ -14,6 +14,13 @@ type PostgresDatabaseRepo struct {
 const dbTimeout = time.Second * 3
 
 
+func (m *PostgresDatabaseRepo) Connection() *sql.DB {
+	return m.DB
+}
+
+
+
+
 func (m *PostgresDatabaseRepo) AllMovies() ([]*models.Movie, error) {
 	ctx, cancel := context.WithTimeout(context.Background(),dbTimeout)
 	defer cancel()
